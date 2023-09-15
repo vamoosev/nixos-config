@@ -17,7 +17,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  services.flatpak.enable = true:
+  services.flatpak.enable = true;
   boot.loader.efi.efiSyMountPoint = "/boot/efi";
 
   networking.hostName = "RMSFuckYou"; # Define your hostname.
