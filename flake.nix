@@ -30,7 +30,7 @@
         ./system/RMSFuckYou-configuration.nix
        ];
 
- }
+ };
 	};
   
   	hmConfig = {
