@@ -43,20 +43,41 @@
 		fd
 		file
 		fzf
+		xdg-utils
+		glib
 		htop
 		nix-index
 		man-pages
 		tldr
 		unzip
 		ripgrep
+		wl-clipboard
 		grim
 		slurp
 		zip
 		thefuck
+		element-desktop
 		starship
+	        sway-contrib.grimshot
 	  ];
 
+	   programs.waybar = {
+		enable = true;
+		settings = [
+			{
+			  mainbar = {
+				layer = "top";
+				postition = "top";
+				height = 30;
+				modules-left = [ "sway/workspaces" ];
+				modules-center = [ "sway/window" ];
+				modules-right = [ "temprature"  "wireplumber" "cpu" "disk" "memory" "clock" "tray" ]; 
 
+			  };
+			
+			}
+		];
+	   };
 	   programs.neovim = {
 		enable = true;
 		defaultEditor = true;
@@ -71,7 +92,14 @@
   		source = ./nvimconf;
   		recursive = true;
            };
-
+#	   xdg.mime.defaultApplications = {
+#		  "text/html" = "net.librewolf.librewolf.desktop";
+#		  "x-scheme-handler/http" = "net.librewolf.librewolf.desktop";
+#		  "x-scheme-handler/https" = "net.librewolf.librewolf.desktop";
+#		  "x-scheme-handler/about" = "net.librewolf.librewolf.desktop";
+#		  "x-scheme-handler/unknown" = "net.librewolf.librewolf.desktop";
+#	    };
+#	   
 	   programs.foot = {
 		enable = true;
 		settings = {
@@ -91,6 +119,7 @@
 	    dotDir = ".config/zsh";
 	    enableAutosuggestions = true;
 	    enableCompletion = true;
+
 	    shellAliases = {
 	      sl = "eza";
 	      ls = "eza";
@@ -98,6 +127,7 @@
 	      la = "exa -la";
 	      ip = "ip --color=auto";
 	      killall = "pkill";
+	      update-sys = "~/.config/nixos/update.sh";
 	    };
 
 	    initExtra = ''
@@ -165,6 +195,14 @@
 	    config = rec {
 	      modifier = "Mod4";
 	      menu = "ulauncher";
+	      bars = [
+		{
+			position = "top";
+			command = "waybar";
+
+		}
+
+	      ];
 	      window.commands = [
 		{
 			command = "border none";
@@ -186,9 +224,10 @@
 	      terminal = "foot";
 	      startup = [
 	      {command = "mako";}
+	      {command = ''swaymsg output "*" bg ./wp.jpg fill'';}
 	      ];
 	      keybindings = lib.mkOptionDefault {
-		"${modifier}+Shift+s" = ''grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy -t image/png'';
+		"${modifier}+Shift+s" = ''grimshot copy area'';
 	      };
 	  };
 	 };
