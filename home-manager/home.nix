@@ -61,23 +61,25 @@
 	        sway-contrib.grimshot
 	  ];
 
-	   programs.waybar = {
-		enable = true;
-		settings = [
-			{
-			  mainbar = {
-				layer = "top";
-				postition = "top";
-				height = 30;
-				modules-left = [ "sway/workspaces" ];
-				modules-center = [ "sway/window" ];
-				modules-right = [ "temprature"  "wireplumber" "cpu" "disk" "memory" "clock" "tray" ]; 
-
-			  };
-			
-			}
-		];
-	   };
+#	   programs.waybar = {
+#		enable = true;
+#		style = "./style.css";
+#		settings = [
+#			{
+#			  "*" = {
+#				layer = "top";
+#				postition = "top";
+#				height = 200;
+#				modules-left = [ "sway/workspaces" ];
+#				modules-center = [ "sway/window" ];
+#				modules-right = [ "temprature"  "wireplumber" "cpu" "disk" "memory" "clock" "tray" ]; 
+#
+#			  };
+#
+#			
+#			}
+#		];
+#	   };
 	   programs.neovim = {
 		enable = true;
 		defaultEditor = true;
@@ -87,7 +89,35 @@
 		withNodeJs = true;
 		withPython3 = true;
 	   };
-	   
+	  programs.i3status-rust = {
+		enable = true;
+		bars = {
+			default= {
+				blocks = [
+					{
+						block = "memory";
+						format = " $mem_total_used_percents ";
+					}
+					{
+						block = "cpu";
+						interval = 1;
+					}
+					{
+						block = "battery";
+
+					}
+					{
+						block = "time";
+						format = " $timestamp.datetime(f:'%a %d/%m %R') ";
+						interval = 60;
+					}
+					];
+
+			};
+
+		};
+
+	  };
 	   xdg.configFile.nvim = {
   		source = ./nvimconf;
   		recursive = true;
@@ -106,7 +136,7 @@
 			  main = {
 			    term = "xterm-256color";
 
-			    font = "FiraCode Nerd Font:size=20";
+			    font = "FiraCode Nerd Font:size=12";
 
 			    dpi-aware = "yes";
 			  };
@@ -127,6 +157,7 @@
 	      la = "exa -la";
 	      ip = "ip --color=auto";
 	      killall = "pkill";
+	      edit-hm = "nvim ~/.config/nixos/home-manager/home.nix";
 	      update-sys = "~/.config/nixos/update.sh";
 	    };
 
@@ -198,8 +229,12 @@
 	      bars = [
 		{
 			position = "top";
-			command = "waybar";
-
+			fonts = {
+				names = [ "FiraCode Nerd Font" ];
+				style = "Regular";
+				size = 12.0;
+			};
+			statusCommand = "i3status-rs ~/.config/i3status-rust/*";
 		}
 
 	      ];
@@ -227,7 +262,7 @@
 	      {command = ''swaymsg output "*" bg ./wp.jpg fill'';}
 	      ];
 	      keybindings = lib.mkOptionDefault {
-		"${modifier}+Shift+s" = ''grimshot copy area'';
+		"${modifier}+Shift+s" = "grimshot copy area";
 	      };
 	  };
 	 };
