@@ -21,12 +21,16 @@
 		(lib.hiPrio gcc)
 		(lib.lowPrio clang)
 		bear
+		mangohud
+		gamemode
 		binutils
 		clang-tools
 		cmake
 		ctags
+		joplin-desktop
 		gdb
 		gitAndTools.tig
+		octaveFull
 		git-quick-stats
 		gnumake
 	        clipman
@@ -43,11 +47,13 @@
 		fd
 		file
 		fzf
+		zathura
 		xdg-utils
 		glib
 		htop
 		nix-index
 		man-pages
+		tectonic
 		tldr
 		unzip
 		ripgrep
@@ -158,7 +164,7 @@
 	      ip = "ip --color=auto";
 	      killall = "pkill";
 	      edit-hm = "nvim ~/.config/nixos/home-manager/home.nix";
-	      update-sys = "~/.config/nixos/update.sh";
+	      update-sys = "~/.config/nixos/update.perl";
 	    };
 
 	    initExtra = ''
