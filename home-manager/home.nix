@@ -170,7 +170,15 @@
 
 	    initExtra = ''
 		eval "$(starship init zsh)"
-
+		if [ "$(tty)" = "/dev/tty1" ] ; then
+		    # Your environment variables
+		    export QT_QPA_PLATFORM=wayland
+		    export MOZ_ENABLE_WAYLAND=1
+		    export MOZ_WEBRENDER=1
+		    export XDG_SESSION_TYPE=wayland
+		    export XDG_CURRENT_DESKTOP=sway
+		    exec sway
+		fi
 
 
 				'';
@@ -265,11 +273,11 @@
 	      # Use kitty as default terminal
 	      terminal = "foot";
 	      startup = [
-	      {command = "mako";}
-	      {command = ''swaybg -i ./wp.jpg -m fill '';}
+	      { command = "mako &"; always=true; }
+	      { command = "swaybg -i /home/aarni/.config/nixos/home-manager/wp.jpg -m fill &"; always=true; }
 	      ];
 	      keybindings = lib.mkOptionDefault {
-		"${modifier}+Shift+s" = "grimshot copy area";
+		"${modifier}+Shift+s" = "exec grimshot copy area";
 	      };
 	  };
 	 };
