@@ -43,6 +43,7 @@
 		rustup
 		quick-lint-js
 		acpi
+		swaybg
 		eza
 		fd
 		file
@@ -265,7 +266,7 @@
 	      terminal = "foot";
 	      startup = [
 	      {command = "mako";}
-	      {command = ''swaymsg output "*" bg ./wp.jpg fill'';}
+	      {command = ''swaybg -i ./wp.jpg -m fill '';}
 	      ];
 	      keybindings = lib.mkOptionDefault {
 		"${modifier}+Shift+s" = "grimshot copy area";

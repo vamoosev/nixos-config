@@ -7,6 +7,7 @@ if ($num_args != 0) {
 
 $arg = $ARGV[0];
 if ($arg eq "update-all") {
+	chdir("/home/aarni/.config/nixos");
 	system("nix flake update --commit-lock-file");
 	system("sudo nixos-rebuild switch --flake .#");
 	system("nix build .#hmConfig.aarni.activationPackage");
@@ -15,10 +16,12 @@ if ($arg eq "update-all") {
 
 }
 elsif ($arg eq "update") {
+	chdir("/home/aarni/.config/nixos");
 	system("nix flake update --commit-lock-file");
 	system("sudo nixos-rebuild switch --flake .#");
 }
 elsif ($arg eq "update-hm") {
+	chdir("/home/aarni/.config/nixos");
 	system("nix build .#hmConfig.aarni.activationPackage");
 	system("./result/activate");
 }
