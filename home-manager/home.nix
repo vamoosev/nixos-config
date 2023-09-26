@@ -33,6 +33,7 @@
 		gitAndTools.tig
 		octaveFull
 		git-quick-stats
+		openrgb
 		gnumake
 	        clipman
 		meson
