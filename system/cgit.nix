@@ -1,10 +1,23 @@
-{pkgs, lib, ...}:
+{pkgs, lib, config, modulesPath, ...}:
 
 {
+	
+
+
+
+
+
+
 	imports = [
+		(modulesPath + "/profiles/qemu-guest.nix")
 		./common.nix
 		"${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
 		];
+		boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" ];
+		networking.useDHCP = lib.mkDefault true;
+		nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
+
 	networking.hostName = "cgit";
 	disco.devices = {
 		disk = {
