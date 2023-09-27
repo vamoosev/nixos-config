@@ -31,6 +31,12 @@
        ];
 
  };
+  cgit = lib.nixosSystem {
+		inherit system;
+		modules = [
+			./system/cgit.nix
+		];
+  };
 	};
   
   	hmConfig = {

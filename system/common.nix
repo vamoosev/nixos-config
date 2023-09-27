@@ -73,7 +73,7 @@
 	curl
 	usbutils
 	gitAndTools.tig
-
+	bat
 	htop
     ];
   };
