@@ -9,10 +9,12 @@
   nix.extraOptions = ''
   	experimental-features = nix-command flakes
   '';
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  services.flatpak.enable = true;
+   boot.loader.efi = {
+	canTouchEfiVariables = true;
+	efiSysMountPoint = "/boot/efi";
+  };
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "nodev";
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -53,6 +55,27 @@
     description = "aarni";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
+    packages =  with pkgs; [
+	eza
+	fd
+	file
+	fzf
+	starship
+	zip
+	unzip
+	tldr
+	ripgrep
+	thefuck
+	man-pages
+	nix-index
+	wget
+	xz
+	curl
+	usbutils
+	gitAndTools.tig
+
+	htop
+    ];
   };
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

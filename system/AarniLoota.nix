@@ -2,13 +2,13 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
-
 {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
-      ./desktop.nix
+    	./desktop.nix
+	./common.nix
     ];
-  networking.hostName = "aarniLoota";
+  networking.hostName = "AarniLoota";
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
@@ -25,14 +25,6 @@
     };
 
   swapDevices = [ ];
-  users.users.aarni.pkgs = with pkgs; [ 
-        librewolf
-	pavucontrol
-	(pkgs.discord.override {
-  	withOpenASAR = true;
-  	withVencord = true;
-        nss = nss_latest;
-	}) ];
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -41,7 +33,44 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp6s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp5s0.useDHCP = lib.mkDefault true;
+ users.users.aarni.packages = with pkgs; [
+		(lib.hiPrio gcc)
+		(lib.lowPrio clang)
+		bear
+		texlive.combined.scheme-full
+		mangohud
+		gamemode
+		binutils
+		clang-tools
+		cmake
+		ctags
+		thunderbird
+		freecad
+		patchelf
+		luajit
+		rr
+		rustup
+		quick-lint-js
+		gdb
+		octaveFull
+		git-quick-stats
+		openrgb
+		gnumake
+		meson
+		wf-recorder
+		ncspot
+		mpv
+		ninja
+		ulauncher
+		acpi
+		glib
+		mpv
+		tectonic
+		element-desktop
 
+		
+
+ ];
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

@@ -15,12 +15,7 @@
   	experimental-features = nix-command flakes
   '';
 
-  boot.loader.efi = {
-	canTouchEfiVariables = true;
-	efiSysMountPoint = "/boot/efi";
-  };
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "nodev";
+ 
   #boot.loader.grub.useOSProber = true;
 
   networking.hostName = "AarniLoota"; # Define your hostname.

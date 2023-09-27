@@ -1,6 +1,5 @@
-{ config, pkgs, ...}:
+{ config, pkgs, users, ...}:
 {
-
  imports = [
 	./common.nix
  ];
@@ -18,9 +17,26 @@
   };
   users.users.aarni.packages = with pkgs; [ 
   cinnamon.nemo-with-extensions
-  neovim
   gnome3.adwaita-icon-theme 
+        librewolf
+	pavucontrol
+	(pkgs.discord.override {
+  	withOpenASAR = false; 
+  	withVencord = true;
+        nss = nss_latest;
+	}) 
 
+	xdg-utils
+	sway
+	starship
+	mako
+	clipman
+	swaybg
+	slurp
+	grim
+	sway-contrib.grimshot
+	thefuck
+	wl-clipboard
   ];
   fonts.packages = with pkgs; [
 	fira-code-nerdfont

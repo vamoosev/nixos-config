@@ -1,3 +1,0 @@
-[submodule "home-manager/home-manager/nvimconf"]
-	path = home-manager/home-manager/nvimconf
-	url = git@github.com:vamoosev/nvimconf.git
