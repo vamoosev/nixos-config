@@ -28,8 +28,11 @@
 		clang-tools
 		cmake
 		ctags
-		joplin-desktop
+		thunderbird
+		
+		freecad
 		gdb
+		wget
 		gitAndTools.tig
 		octaveFull
 		git-quick-stats
@@ -37,8 +40,12 @@
 		gnumake
 	        clipman
 		meson
+		wf-recorder
+		ncspot
+		mpv
 		mako
 		ninja
+
 		patchelf
 		luajit
 		rr
@@ -234,6 +241,7 @@
 	      la = "exa -la";
 	      ip = "ip --color=auto";
 	      killall = "pkill";
+	      cat="bat";
 	      edit-hm = "nvim ~/.config/nixos/home-manager/home.nix";
 	      update-sys = "~/.config/nixos/update.perl";
 	    };
@@ -250,6 +258,8 @@
 		    exec sway
 		fi
 
+		export PATH=$PATH:$HOME/.cargo/bin:$PATH
+		source ~/export-esp.sh
 
 				'';
 

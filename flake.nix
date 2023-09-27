@@ -21,7 +21,7 @@
 		AarniLoota = lib.nixosSystem {
 			inherit system;
 			modules = [
-				./system/AarniLoota-configuration.nix	
+				./system/AarniLoota.nix	
 			];
 		};
  RMSFuckYou = lib.nixosSystem {
