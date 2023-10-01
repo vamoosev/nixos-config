@@ -41,7 +41,9 @@
   fonts.packages = with pkgs; [
 	fira-code-nerdfont
 ];
-
+ programs.sway = {
+		enable = true;
+  };
 
  
 

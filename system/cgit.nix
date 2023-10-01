@@ -1,4 +1,4 @@
-{pkgs, lib, config, modulesPath, disko, ...}:
+{pkgs, lib, config, option, modulesPath, disko, ...}:
 {
 	
 
@@ -17,45 +17,40 @@
 
 
 	networking.hostName = "cgit";
-	disko.devices = {
-		disk = {
-			sda = {
-				type = "disk";
-				device = "/dev/sda";
-				content = {
-					type = "gpt";
-					partitions = {
-						boot = {
-							type = "efi";
-							size = 512;
-							format = "vfat";
-							mountPoint = "/boot";
-						};
-						root = {
-							type = "linux";
-							size = "100%";
-							format = "ext4";
-							mountPoint = "/";
-						};
-					};
-					};
-				};
-			};
-
-		};
-	services.cgit = {
-		enable = true;
-		domain = "cgit.localhost";
-		authorizedKeys = [
-		 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICNS7QxGjuCRj+j9zfcXRtXrD4JtCI7zkUuzyZTfhOAL"
-		];
-		mirrors = [
-			{
-				name = "nixos-config";
-				url = "https://github.com/vamoosev/nixos-config";
-			}
-		];
-
-	};
 	
+#  disko.devices = {
+#    disk = {
+#      vdb = {
+#        device = "/dev/sda";
+#        type = "disk";
+#        content = {
+#          type = "gpt";
+#          partitions = {
+#            ESP = {
+#              type = "EF00";
+#              size = "500M";
+#              content = {
+#                type = "filesystem";
+#                format = "vfat";
+#                mountpoint = "/boot";
+#              };
+#            };
+#            root = {
+#              size = "100%";
+#              content = {
+#                type = "filesystem";
+#                format = "ext4";
+#                mountpoint = "/";
+#              };
+#            };
+#          };
+#        };
+#      };
+#    };
+#  };
+
+	services.nginx.gitweb.enable = true;
+	services.gitweb = {
+		projectroot = "/var/lib/git";
+	};
 }

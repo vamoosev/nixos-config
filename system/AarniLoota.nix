@@ -36,6 +36,7 @@
  users.users.aarni.packages = with pkgs; [
 		(lib.hiPrio gcc)
 		(lib.lowPrio clang)
+		android-studio
 		bear
 		texlive.combined.scheme-full
 		mangohud
@@ -48,7 +49,9 @@
 		freecad
 		patchelf
 		luajit
+    gnuplot
 		rr
+    pandoc
 		rustup
 		quick-lint-js
 		gdb

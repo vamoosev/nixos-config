@@ -5,6 +5,8 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+  ];
   # Bootloader.
   nix.extraOptions = ''
   	experimental-features = nix-command flakes
@@ -68,6 +70,7 @@
 	thefuck
 	man-pages
 	nix-index
+	bat
 	wget
 	xz
 	curl
@@ -79,9 +82,7 @@
   };
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  programs.sway = {
-		enable = true;
-  };
+  
 
   hardware.opengl.driSupport32Bit = true; 
   # List packages installed in system profile. To search, run:

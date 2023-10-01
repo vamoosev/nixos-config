@@ -66,7 +66,7 @@ programs.i3status-rust = {
 		HDMI-A-1 = { pos = "0 0"; };
 	      };
 	      # Use kitty as default terminal
-	      terminal = "foot";
+	      terminal = "kitty";
 	      startup = [
 	      { command = "mako &"; always=true; }
 	      { command = "swaybg -i /home/aarni/.config/nixos/home-manager/wp.jpg -m fill &"; always=true; }

@@ -8,6 +8,7 @@
 		./zsh.nix
 		./sway.nix
 		./zathura.nix
+		./doom-emacs.nix
 		./nvim.nix
 	  ];
 	  # This value determines the Home Manager release that your configuration is

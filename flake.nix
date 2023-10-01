@@ -5,9 +5,10 @@
 	home-manager.url = "github:nix-community/home-manager/master";
 	home-manager.inputs.nixpkgs.follows = "nixpkgs";
 	disko.url = "github:nix-community/disko";
+	nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
 	disko.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { nixpkgs, home-manager, disko, ...}: 
+	outputs = { nixpkgs, home-manager, disko, nix-doom-emacs, ...}: 
   let 
      system = "x86_64-linux";
 
@@ -36,6 +37,8 @@
   cgit = lib.nixosSystem {
 		inherit system;
 		modules = [
+			disko.nixosModules.disko
+
 			./system/cgit.nix
 		];
   };
@@ -46,7 +49,7 @@
 			pkgs = nixpkgs.legacyPackages.${system};
 			modules = [
 				./home-manager/home.nix
-				disko.nixosModules.disko
+				nix-doom-emacs.hmModule
 			];
 			};
 		};
