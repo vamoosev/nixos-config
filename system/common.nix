@@ -17,6 +17,7 @@
   };
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "nodev";
+  boot.loader.grub.efi = true;
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
