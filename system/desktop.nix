@@ -31,6 +31,12 @@
 	starship
 	mako
 	clipman
+  neomutt
+  curl
+  isync
+  msmtp
+  pass
+  mutt-wizard
 	swaybg
 	slurp
 	grim
