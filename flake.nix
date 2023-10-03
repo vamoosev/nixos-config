@@ -30,7 +30,7 @@
  RMSFuckYou = lib.nixosSystem {
        inherit system;
        modules = [
-        ./system/RMSFuckYou-configuration.nix
+        ./system/RMSFuckYou.nix
        ];
 
  };

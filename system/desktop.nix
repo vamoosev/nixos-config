@@ -28,6 +28,7 @@
 
 	xdg-utils
 	sway
+	ulauncher
 	starship
 	mako
 	clipman
