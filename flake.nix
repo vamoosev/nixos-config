@@ -43,6 +43,12 @@
 		];
   };
 	};
+  itmestarit = lib.nixosSystem {
+    inherit system;
+    modules = [
+        ./system/server.nix
+    ];
+  };
   
   	hmConfig = {
 		aarni = home-manager.lib.homeManagerConfiguration {
