@@ -10,7 +10,9 @@
       url = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/archive/nixos-23.05/nixos-mailserver-nixos-23.05.tar.gz";
       # To get the sha256 of the nixos-mailserver tarball, we can use the nix-prefetch-url command:
       # release="nixos-23.05"; nix-prefetch-url "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/archive/${release}/nixos-mailserver-${release}.tar.gz" --unpack
+
       sha256 = "sha256:1ngil2shzkf61qxiqw11awyl81cr7ks2kv3r3k243zz7v2xakm5c";
+
     })
   ];
   boot.initrd.availableKernelModules = [ "ata_piix" "virtio_pci" "virtio_scsi" "xhci_pci" "sd_mod" "sr_mod" ];
@@ -23,9 +25,10 @@
       fsType = "btrfs";
     };
 
-  fileSystems."/boot/" =
+  fileSystems."/boot" =
     { device = "/dev/sda1";
       fsType = "ext2";
+
     };
 
   swapDevices = [ ];
@@ -45,6 +48,7 @@
     efiSupport = false;
     devices = [ "/dev/sda" ];
   };
+
   networking.hostName = "itmestarit";
    users.users.otto = {
         isNormalUser = true;
