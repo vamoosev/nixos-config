@@ -8,7 +8,7 @@
 	nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
 	disko.inputs.nixpkgs.follows = "nixpkgs";
   };
-	outputs = { nixpkgs, home-manager, disko, nix-doom-emacs, ...}: 
+	outputs = { nixpkgs, home-manager, disko, nix-doom-emacs, ...}:
   let 
      system = "x86_64-linux";
 
@@ -46,6 +46,7 @@
   itmestarit = lib.nixosSystem {
     inherit system;
     modules = [
+        disko.nixosModules.disko
         ./system/server.nix
     ];
   };

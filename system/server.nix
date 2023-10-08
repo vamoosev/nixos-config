@@ -12,6 +12,7 @@
       # release="nixos-23.05"; nix-prefetch-url "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/archive/${release}/nixos-mailserver-${release}.tar.gz" --unpack
       sha256 = "sha256:1ngil2shzkf61qxiqw11awyl81cr7ks2kv3r3k243zz7v2xakm5c";
     })
+    ./server-disko.nix
   ];
   boot.initrd.availableKernelModules = [ "ata_piix" "virtio_pci" "virtio_scsi" "xhci_pci" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
@@ -23,9 +24,9 @@
       fsType = "btrfs";
     };
 
-  fileSystems."/boot/efi" =
+  fileSystems."/boot/" =
     { device = "/dev/sda1";
-      fsType = "vfat";
+      fsType = "ext2";
     };
 
   swapDevices = [ ];
@@ -37,7 +38,14 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.ens3.useDHCP = lib.mkDefault true;
 
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
+   boot.loader.grub = {
+    enable = true;
+    efiSupport = false;
+    devices = [ "/dev/sda" ];
+  };
   networking.hostName = "itmestarit";
    users.users.otto = {
         isNormalUser = true;

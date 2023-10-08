@@ -18,14 +18,14 @@
   users.users.aarni.packages = with pkgs; [ 
   cinnamon.nemo-with-extensions
   gnome3.adwaita-icon-theme 
-        librewolf
 	pavucontrol
+  firefox
 	(pkgs.discord.override {
   	withOpenASAR = false; 
   	withVencord = true;
         nss = nss_latest;
 	}) 
-
+  rnix-lsp
 	xdg-utils
 	sway
 	ulauncher
