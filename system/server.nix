@@ -52,7 +52,6 @@
   networking.hostName = "itmestarit";
    users.users.otto = {
         isNormalUser = true;
-        description = "aarni";
         extraGroups = [ "networkmanager" "wheel" ];
         shell = pkgs.zsh;
         packages =  with pkgs; [
@@ -80,7 +79,6 @@
       };
     users.users.axel = {
         isNormalUser = true;
-        description = "aarni";
         extraGroups = [ "networkmanager" "wheel" ];
         shell = pkgs.zsh;
         packages =  with pkgs; [
@@ -116,7 +114,7 @@
       addSSL=true;
       enableACME=true;
       locations."/" = {
-        proxyPass = "htts://62.78.210.249";
+        proxyPass = "https://62.78.210.249";
         proxyWebsockets = true;
       };
     };
