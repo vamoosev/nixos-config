@@ -45,8 +45,8 @@
 
    boot.loader.grub = {
     enable = true;
-    efiSupport = false;
-    devices = [ "/dev/sda" ];
+    efiSupport = lib.mkForce false;
+    devices = lib.mkForce [ "/dev/sda" ];
   };
 
   networking.hostName = "itmestarit";
