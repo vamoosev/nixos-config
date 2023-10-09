@@ -10,7 +10,7 @@
 	      sl = "eza";
 	      ls = "eza";
 	      l = "eza -l";
-	      la = "exa -la";
+	      la = "eza -la";
 	      ip = "ip --color=auto";
 	      killall = "pkill";
 	      cat="bat";

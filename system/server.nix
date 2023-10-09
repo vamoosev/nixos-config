@@ -104,6 +104,7 @@
       htop
         ];
       };
+    networking.firewall.enable = false;
     services.nginx.enable = true;
     services.nginx.virtualHosts."itmestarit.fi" = {
       addSSL=true;
