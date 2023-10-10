@@ -112,8 +112,9 @@
       root = "/var/www/itmestarit.fi/";
     };
     services.nginx.virtualHosts."vw.itmestarit.fi" = {
-      addSSL=true;
+      forceSSL=true;
       enableACME=true;
+
       locations."/" = {
         proxyPass = "http://62.78.210.249:443";
         proxyWebsockets = true;
