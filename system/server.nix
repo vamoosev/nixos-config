@@ -151,4 +151,9 @@
      '';
   };
 
+   services.cgit.git = {
+     package=pkgs.cgit-pink;
+     enable = true;
+     scanPath = "/var/git/";
+   };
 }
