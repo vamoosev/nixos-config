@@ -26,6 +26,7 @@
         nss = nss_latest;
 	}) 
   rnix-lsp
+  typst
 	xdg-utils
 	sway
   thunderbird
