@@ -145,7 +145,7 @@
      extraConfig = ''
        # starttls needed for authentication, so the fqdn required to match
        # the certificate
-       $config['smtp_server'] = "tls://mail.itmestarit.fi";
+       $config['smtp_server'] = "tls://${config.mailserver.fqdn}";
        $config['smtp_user'] = "%u";
        $config['smtp_pass'] = "%p";
      '';
