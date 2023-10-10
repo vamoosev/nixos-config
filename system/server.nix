@@ -115,7 +115,7 @@
       addSSL=true;
       enableACME=true;
       locations."/" = {
-        proxyPass = "https://62.78.210.249:443";
+        proxyPass = "http://62.78.210.249:443";
         proxyWebsockets = true;
       };
     };

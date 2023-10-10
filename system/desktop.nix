@@ -28,6 +28,7 @@
   rnix-lsp
 	xdg-utils
 	sway
+  thunderbird
 	ulauncher
 	starship
 	mako
